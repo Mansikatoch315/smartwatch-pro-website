@@ -1,0 +1,638 @@
+/* All your existing CSS code from the <style> tag goes here */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --dark-gradient: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --shadow-glow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    --neon-glow: 0 0 20px rgba(102, 126, 234, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    background: var(--dark-gradient);
+    color: #ffffff;
+}
+
+.dark-mode .navbar {
+    background: rgba(0, 0, 0, 0.9) !important;
+    backdrop-filter: blur(10px);
+}
+
+.dark-mode .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.dark-mode .hero {
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 50%, #2d1b69 100%);
+}
+
+/* Enhanced Navbar */
+.navbar {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-gradient);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Enhanced Hero Section */
+.hero {
+    min-height: 100vh;
+    background: var(--primary-gradient);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.1)"/><stop offset="100%" style="stop-color:rgba(255,255,255,0)"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="300" cy="700" r="80" fill="url(%23a)"/></svg>');
+    animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+/* Glass Morphism Cards */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-glow);
+}
+
+.glass-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--neon-glow);
+}
+
+/* Enhanced Buttons */
+.btn-gradient {
+    background: var(--primary-gradient);
+    border: none;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.btn-gradient:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+    color: white;
+}
+
+.btn-outline-gradient {
+    background: transparent;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.btn-outline-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--primary-gradient);
+    border-radius: 50px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.btn-outline-gradient:hover::before {
+    opacity: 1;
+}
+
+.btn-outline-gradient:hover {
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Product Image Enhancement */
+.product-image {
+    max-height: 400px;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Feature Cards */
+.feature-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+}
+
+/* Animations */
+.animate-slide {
+    animation: slideIn 1s ease forwards;
+    opacity: 0;
+}
+
+.animate-fade {
+    animation: fadeIn 1s ease forwards;
+    opacity: 0;
+}
+
+.animate-zoom {
+    animation: zoomIn 1s ease forwards;
+    opacity: 0;
+}
+
+.delay-1 { animation-delay: 0.5s; }
+.delay-2 { animation-delay: 1s; }
+.delay-3 { animation-delay: 1.5s; }
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Scroll Animations */
+.animate-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.animate-scroll.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mode Toggle */
+.mode-toggle {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+}
+
+.mode-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+footer {
+    background: var(--dark-gradient);
+    color: white;
+    padding: 3rem 0 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+    }
+    
+    .btn-gradient, .btn-outline-gradient {
+        padding: 12px 30px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Loading Animation */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-gradient);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* --- Features Section Styles --- */
+#features-content {
+    min-height: 100vh; /* Ensure it takes up full viewport height */
+    display: flex;
+    align-items: center; /* Vertically center content if short */
+}
+
+.feature-card {
+    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Light border for light mode */
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 3rem; /* Adjust icon size */
+    color: var(--primary-color); /* Use your primary accent color */
+}
+
+/* Dark mode specific styles for features */
+body.dark-mode .feature-card {
+    background-color: var(--dark-secondary-bg); /* Use a darker secondary background */
+    border-color: var(--dark-border-color); /* Darker border */
+    color: var(--dark-text-color);
+}
+
+body.dark-mode .feature-card .feature-icon {
+    color: var(--dark-primary-color); /* Dark mode accent color */
+}
+
+/* Optional: Ensure text color is consistent for dark mode within features */
+body.dark-mode #features-content h2,
+body.dark-mode #features-content p,
+body.dark-mode .feature-card h3 {
+    color: var(--dark-text-color);
+}
+/* --- Contact Section Styles --- */
+#contact-content {
+    min-height: 100vh; /* Ensure it takes up full viewport height */
+    display: flex;
+    align-items: center; /* Vertically center content if short */
+}
+
+.contact-form {
+    background-color: #fff; /* White background for form in light mode */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.contact-info-card {
+    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Light border for light mode */
+    text-align: center;
+}
+
+.contact-info-card:hover {
+    transform: translateY(-5px);
+}
+
+.contact-icon {
+    font-size: 3rem;
+    color: var(--primary-color); /* Your accent color */
+    margin-bottom: 1rem;
+}
+
+/* Dark mode specific styles for contact page */
+body.dark-mode #contact-content h2,
+body.dark-mode #contact-content p,
+body.dark-mode .contact-info-card h3 {
+    color: var(--dark-text-color);
+}
+
+body.dark-mode .contact-form {
+    background-color: var(--dark-secondary-bg); /* Darker background for form */
+    border-color: var(--dark-border-color); /* Darker border */
+    color: var(--dark-text-color);
+}
+
+body.dark-mode .contact-form .form-label {
+    color: var(--dark-text-color); /* Ensure labels are visible */
+}
+
+body.dark-mode .contact-form .form-control {
+    background-color: var(--dark-form-control-bg); /* Darker input background */
+    color: var(--dark-text-color);
+    border-color: var(--dark-border-color);
+}
+
+body.dark-mode .contact-info-card {
+    background-color: var(--dark-secondary-bg);
+    border-color: var(--dark-border-color);
+    color: var(--dark-text-color);
+}
+
+body.dark-mode .contact-info-card a {
+    color: var(--dark-text-color); /* Ensure links in info cards are readable */
+}
+
+body.dark-mode .contact-icon {
+    color: var(--dark-primary-color);
+}
+
+body.dark-mode .map-placeholder {
+    background-color: #495057 !important; /* Darker placeholder for map */
+    color: #adb5bd !important;
+}
+/* ===================================== */
+/* --- ABOUT SECTION STYLES --- */
+/* ===================================== */
+
+/* General styling for the About section container */
+#about-content {
+    min-height: 100vh; /* Ensures section takes full viewport height for content */
+    display: flex;
+    align-items: center; /* Vertically centers content if it's shorter than viewport */
+    padding-top: 7rem; /* Adjust this to push content below your fixed navbar */
+    padding-bottom: 3rem; /* Add some bottom padding */
+    /* Background and text colors will be inherited from body.light-mode or body.dark-mode */
+}
+
+/* Style for subheadings within the About section (e.g., "Our Mission & Vision") */
+#about-content h3 {
+    color: var(--primary-color); /* Uses your main accent color for light mode */
+}
+
+/* Ensures list item text color is consistent in light mode */
+#about-content .list-unstyled li {
+    color: var(--text-color);
+}
+
+/* ===================================== */
+/* --- DARK MODE OVERRIDES for About Section --- */
+/* ===================================== */
+
+/* Styles for headings and paragraphs within the About section in dark mode */
+body.dark-mode #about-content h2,
+body.dark-mode #about-content p,
+body.dark-mode #about-content .list-unstyled li {
+    color: var(--dark-text-color); /* Light grey text color for dark mode */
+}
+
+/* Styles for subheadings within the About section in dark mode */
+body.dark-mode #about-content h3 {
+    color: var(--dark-primary-color); /* Uses your dark mode accent color */
+}
+
+/* Note: Image styling (img-fluid, rounded, shadow-lg) is primarily handled
+   by Bootstrap classes and typically doesn't need dark mode specific CSS
+   unless you want to change filters or borders based on mode. */
+
+   /* --- Core Styles (ensure these are present, adjust colors as needed) --- */
+:root {
+    /* Light Mode Variables */
+    --background-color: #ffffff;
+    --text-color: #343a40; /* Dark text for light mode */
+    --navbar-bg-light: rgba(255, 255, 255, 0.9); /* Slightly transparent white for light nav */
+    --navbar-text-light: #343a40; /* Dark text for light nav */
+    --navbar-hover-light: var(--primary-color); /* Your primary color for hover in light mode */
+    --navbar-scrolled-bg-light: rgba(255, 255, 255, 0.95); /* Opaque white when scrolled */
+    --gradient-start: #007bff; /* Example blue for gradient */
+    --gradient-end: #0056b3;   /* Darker blue for gradient */
+}
+
+body.dark-mode {
+    /* Dark Mode Variables (ensure these are defined and are dark) */
+    --dark-background-color: #1a1a2e; /* Very dark background */
+    --dark-text-color: #e0e0e0; /* Light grey text for dark mode */
+    --dark-secondary-bg: #21213d; /* Slightly lighter dark for cards/forms */
+    --dark-border-color: rgba(255, 255, 255, 0.1);
+    --dark-navbar-bg: rgba(20, 20, 35, 0.9); /* Dark background for navbar in dark mode */
+    --dark-navbar-text: #e0e0e0; /* Light text for dark nav */
+    --dark-navbar-hover: var(--dark-primary-color); /* Your dark mode primary color for hover */
+    --dark-navbar-scrolled-bg: rgba(20, 20, 35, 0.95); /* Opaque dark when scrolled */
+}
+
+body.light-mode {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+body.dark-mode {
+    background-color: var(--dark-background-color);
+    color: var(--dark-text-color);
+}
+
+/* --- Navbar Base Styles --- */
+.navbar {
+    background-color: var(--navbar-bg-light); /* Default light mode background */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Light border */
+}
+
+/* Navbar links default to light mode text color */
+.navbar .nav-link {
+    color: var(--navbar-text-light) !important; /* !important to override Bootstrap's default */
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: var(--navbar-hover-light) !important; /* Hover/active color */
+}
+
+.navbar-brand {
+    color: var(--navbar-text-light) !important; /* Brand text color */
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: var(--navbar-hover-light) !important;
+}
+
+/* Scrolled Navbar Style (Light Mode) */
+.navbar.scrolled {
+    background-color: var(--navbar-scrolled-bg-light);
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+
+/* --- DARK MODE Navbar Styles --- */
+body.dark-mode .navbar {
+    background-color: var(--dark-navbar-bg); /* Dark background for navbar in dark mode */
+    border-bottom-color: var(--dark-border-color); /* Dark mode border */
+}
+
+body.dark-mode .navbar .nav-link {
+    color: var(--dark-navbar-text) !important; /* Make links light in dark mode */
+}
+
+body.dark-mode .navbar .nav-link:hover,
+body.dark-mode .navbar .nav-link.active {
+    color: var(--dark-navbar-hover) !important; /* Lighter hover/active color for dark mode */
+}
+
+body.dark-mode .navbar-brand {
+    color: var(--dark-navbar-text) !important; /* Brand text light in dark mode */
+}
+
+body.dark-mode .navbar-brand:hover {
+    color: var(--dark-navbar-hover) !important;
+}
+
+/* Dark mode scrolled navbar style */
+body.dark-mode .navbar.scrolled {
+    background-color: var(--dark-navbar-scrolled-bg);
+    border-bottom-color: var(--dark-border-color);
+}
+
+/* --- Theme Toggle Button Styling (adjust as needed) --- */
+.mode-toggle {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.mode-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Ensure the icon color is visible in both modes if it's not text */
+#modeIcon {
+    color: inherit; /* Inherit color from parent button */
+    /* Or specifically set if your icon isn't text: */
+    /* body.light-mode #modeIcon { color: var(--text-color); } */
+    /* body.dark-mode #modeIcon { color: var(--dark-text-color); } */
+}
+
+.image-container {
+height: 250px; /* Adjust this to your desired equal height /
+overflow: hidden;
+margin-bottom: 1rem; / Add some spacing between image containers if needed */
+}
+
+.image-container img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block; /* Prevent extra space below inline images */
+}
